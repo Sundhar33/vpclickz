@@ -307,10 +307,10 @@ const Index = () => {
                       <div>
                         <p className="font-semibold">Phone / WhatsApp</p>
                         <a
-                          href="tel:1234567890"
+                          href="tel:6385371104"
                           className="text-primary hover:underline"
                         >
-                          +91 1234567890
+                          +91 6385371104
                         </a>
                       </div>
                     </div>
