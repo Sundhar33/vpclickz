@@ -45,7 +45,7 @@ const Index = () => {
 
     // WhatsApp message format
     const whatsappMessage = `*New Photography Inquiry*%0A%0A*Name:* ${formData.name}%0A*Email:* ${formData.email || 'Not provided'}%0A*Phone:* ${formData.phone}%0A*Message:* ${formData.message}`;
-    const whatsappUrl = `https://wa.me/911234567890?text=${whatsappMessage}`;
+    const whatsappUrl = `https://wa.me/916385371104?text=${whatsappMessage}`;
     
     window.open(whatsappUrl, '_blank');
     
