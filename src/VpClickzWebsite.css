@@ -1,0 +1,24 @@
+/* VpClickzWebsite.css */
+
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    font-family: 'Montserrat', Arial, sans-serif;
+    background: radial-gradient(ellipse at bottom, #15162b 0%, #23243a 85%);
+    overflow-x: hidden;
+}
+.neon-bg {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    /* ... (all other 200+ lines of CSS) ... */
+}
+
+/* ... (paste ALL your CSS rules here) ... */
+
+img, video {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
