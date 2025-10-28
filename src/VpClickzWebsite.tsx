@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 
 // Import the CSS file you'll create in the next step
 import './VpClickzWebsite.css';
+import vp1 from "'
 
 const VpClickzWebsite: React.FC = () => {
   // State for the contact form inputs
