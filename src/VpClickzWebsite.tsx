@@ -2,7 +2,11 @@ import React, { useState } from 'react';
 
 // Import the CSS file you'll create in the next step
 import './VpClickzWebsite.css';
-import vp1 from "'
+import vp1 from "@src/assets/vp1.jpg"
+import vp2 from "@src/assets/vp2.jpg"
+import vp3 from "@src/assets/vp3.jpg"
+import vp4 from "@src/assets/vp4.jpg"
+import vp5 from "@src/assets/vp5.jpg"
 
 const VpClickzWebsite: React.FC = () => {
   // State for the contact form inputs
@@ -113,15 +117,15 @@ const VpClickzWebsite: React.FC = () => {
         <div className="portfolio-section">
           <div className="portfolio-column">
             {/* NOTE: Images paths are fixed to /images/... assuming they are in the 'public/images' folder */}
-            <div className="portfolio-item"><img src="/images/photo1.JPEG" alt="Portfolio 1" /></div>
-            <div className="portfolio-item"><img src="/images/photo2.JPEG" alt="Portfolio 2" /></div>
+            <div className="portfolio-item"><img src="src/assets/vp1.jpg" alt="Portfolio 1" /></div>
+            <div className="portfolio-item"><img src="src/assets/vp2.jpg" alt="Portfolio 2" /></div>
           </div>
           <div className="portfolio-center">
-            <img src="/images/center.jpeg" alt="Portfolio Center" />
+            <img src="src/assets/vp3.jpg" alt="Portfolio Center" />
           </div>
           <div className="portfolio-column">
-            <div className="portfolio-item"><img src="/images/photo3.JPEG" alt="Portfolio 3" /></div>
-            <div className="portfolio-item"><img src="/images/photo4.JPEG" alt="Portfolio 4" /></div>
+            <div className="portfolio-item"><img src="src/assets/vp4.jpg" alt="Portfolio 3" /></div>
+            <div className="portfolio-item"><img src="src/assets/vp5.jpg" alt="Portfolio 4" /></div>
           </div>
         </div>
       </section>
