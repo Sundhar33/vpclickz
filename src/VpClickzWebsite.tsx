@@ -1,275 +1,538 @@
-import React, { useState } from 'react';
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    font-family: 'Montserrat', Arial, sans-serif;
+    background: radial-gradient(ellipse at bottom, #15162b 0%, #23243a 85%);
+    overflow-x: hidden;
+}
+.neon-bg {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 220px;
+    background: linear-gradient(90deg, #ff9900 5%, #ff00ff 50%, #00f0ff 85%);
+    filter: blur(50px);
+    opacity: 0.85;
+    z-index: 0;
+}
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+    min-height: 100vh;
+}
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 30px 0 15px 0;
+    position: relative;
+}
+
+.logo-img {
+    height: 52px;
+    width: auto;
+    margin-right: 16px;
+    animation: floatLogo 2.8s infinite ease-in-out alternate;
+}
+@keyframes floatLogo {
+    0% { transform: translateY(0);}
+    100% { transform: translateY(-14px);}
+}
+.brand-tagline {
+    color: #13effd;
+    font-size: 1.05rem;
+    font-weight: 400;
+    letter-spacing: 1px;
+    opacity: 0.84;
+    margin-top: 17px;
+}
+nav {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+nav a {
+    color: #eee;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1.11rem;
+    letter-spacing: .02em;
+    padding: 7px 0;
+    position: relative;
+    transition: color .2s;
+}
+nav a::after {
+    content: '';
+    display: block;
+    margin: auto;
+    height: 2px;
+    width: 0;
+    background: linear-gradient(90deg,#fbff00 10%, #ff00fa 90%);
+    transition: width .2s;
+}
+nav a:hover {
+    color: #fff;
+}
+nav a:hover::after {
+    width: 60%;
+}
+.social-icons {
+    display: flex;
+    align-items: center;
+    gap:12px;
+}
+.social-icons a {
+    color: #13effd;
+    font-size:1.2rem;
+    text-decoration:none;
+    transition: color .2s;
+}
+.social-icons a:hover {
+    color: #ff00fa;
+}
+.cta-btn {
+    background: linear-gradient(90deg,#fbff00 10%, #ff00fa 90%);
+    color: #222;
+    border: none;
+    border-radius: 25px;
+    padding: 12px 32px;
+    font-weight: 700;
+    font-size: 1rem;
+    margin-left: 18px;
+    cursor: pointer;
+    box-shadow: 0 0 10px #fbff0060, 0 0 32px #ff00fa50;
+    transition: background 0.3s, color 0.3s, transform 0.18s;
+}
+.cta-btn:hover {
+    background: #fff;
+    color: #000;
+    transform: scale(1.07);
+}
+
+.hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 70px;
+    padding: 52px 0 32px 0;
+    position: relative;
+    min-height: 480px;
+    animation: fadeInUp 1.2s 0.1s both;
+}
+@keyframes fadeInUp {
+    0% { opacity: 0; transform: translateY(60px);}
+    80% { opacity: 1;}
+    100% { opacity: 1; transform: translateY(0);}
+}
+.hero-title {
+    font-size: 2.3rem;
+    font-weight: 900;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+.hero-gradient {
+    background: linear-gradient(270deg, #13effd, #ff00fa, #ffe92b, #13effd, #ff00fa);
+    background-size: 400% 400%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+    animation: animGradient 5s ease-in-out infinite alternate;
+    display: inline-block;
+}
+@keyframes animGradient {
+    0%{background-position:0% 50%}
+    100%{background-position:100% 50%}
+}
+.hero-subtitle {
+    color: #e0e2f4;
+    font-size: 1.24rem;
+    text-align: center;
+    margin-bottom: 38px;
+    max-width: 620px;
+    font-weight: 500;
+    letter-spacing: .04em;
+    opacity: 0.94;
+    animation: fadeInUp 1.6s 0.2s both;
+}
+.hero .cta-btn {
+    margin-top: 8px;
+    font-size: 1.08rem;
+    box-shadow: 0 0 18px #ff00fa90;
+    animation: fadeInUp 1.7s 0.45s both;
+}
+.shape-1, .shape-2, .shape-3, .shape-4 {
+    position: absolute;
+    box-sizing: border-box;
+    border: 3px solid;
+    opacity: 0.85;
+    animation: floatShape 4s infinite alternate ease-in-out;
+}
+.shape-1 {top: 60px; left: 30px; width: 130px; height: 130px; border-color: #5affe7; box-shadow: 0 0 15px #05f0ff, 0 0 40px #00f0ff40; transform: rotate(-10deg);}
+.shape-2 {top: 90px; left: 110px; width: 85px; height: 85px; border-color: #c356fd; box-shadow: 0 0 18px #a035ff, 0 0 38px #ff00ff40; transform: rotate(25deg);}
+.shape-3 {right: 80px; top: 80px; width: 120px; height: 120px; border-color: #ffe92b; box-shadow: 0 0 22px #ffe92b90, 0 0 32px #fff10a65; transform: rotate(-7deg);}
+.shape-4 {right: 40px; top: 180px; width: 90px; height: 90px; border-color: #4efcf3; box-shadow: 0 0 18px #4efcf3, 0 0 30px #00eaff40; transform: rotate(15deg);}
+@keyframes floatShape {
+    0% { transform: translateY(0) scale(1);}
+    100% { transform: translateY(-16px) scale(1.04);}
+}
+.square-sm {
+    position: absolute;
+    width: 16px; height: 16px;
+    background: #5affe7;
+    left: 185px; top: 80px;
+    box-shadow: 0 0 12px #0250f680;
+    border-radius: 2px;
+    animation: bounceSm 2.7s infinite alternate;
+}
+.square-sm2 {
+    position: absolute;
+    width: 12px; height: 12px;
+    background: #ffe92b;
+    right: 130px; top: 150px;
+    box-shadow: 0 0 10px #ffe92b70;
+    border-radius: 2px;
+    animation: bounceSm 3.2s infinite alternate;
+}
+@keyframes bounceSm {
+    0% {transform: translateY(0);}
+    100%{transform: translateY(-10px);}
+}
+.section-title {
+    color: #fff;
+    font-size: 2rem;
+    letter-spacing: 1px;
+    text-align: center;
+    margin: 70px 0 32px 0;
+    font-weight: 800;
+    text-shadow: 0 0 16px #00f0ff50;
+}
+/* About Us */
+.about-section {
+    width: 90%;
+    background: rgba(30,32,54,0.75);
+    border-radius: 18px;
+    margin: 50px auto 30px auto;
+    max-width: 800px;
+    padding: 38px 22px;
+    box-shadow: 0 4px 24px #00f0ff38, 0 0 32px #ff00fa21;
+    color: #e8eaf6;
+    font-size: 1.18rem;
+    text-align: center;
+}
+.about-section .about-title {
+    margin-bottom: 22px;
+    font-size: 2rem;
+    color: #13effd;
+    font-weight: 700;
+}
+/* Services Section */
+.services-list {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    margin-bottom: 32px;
+}
+.service-card {
+    background: rgba(30,30,60,.67);
+    border-radius: 16px;
+    padding: 32px 24px;
+    width: 270px;
+    text-align: center;
+    box-shadow: 0 2px 16px #0eeffe17, 0 0 16px #e022fb25;
+    transition: transform 0.15s;
+}
+.service-card:hover {
+    transform: translateY(-8px) scale(1.035);
+    box-shadow: 0 4px 28px #00f4ff80, 0 0 22px #ff00e7a0;
+}
+.service-icon {
+    font-size: 2.5rem;
+    display: block;
+    margin-bottom: 18px;
+    text-shadow: 0 0 10px #13effdab;
+}
+.service-card h3 {
+    color: #13effd;
+    margin-bottom: 9px;
+}
+.service-card p {
+    color: #e0e2f4;
+    font-size: 1rem;
+}
+.portfolio-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 34px;
+    gap: 46px;
+    flex-wrap: wrap;
+}
+
+.portfolio-column {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+}
+
+.portfolio-item img {
+    width: 270px;
+    height: 170px;
+    object-fit: cover;
+    border-radius: 16px;
+    box-shadow: 0 0 20px #e022fb40;
+    transition: transform .18s, box-shadow .18s;
+    border: 3px solid #13effd40;
+}
+.portfolio-item img:hover {
+    transform: scale(1.05) rotate(-2deg);
+    box-shadow: 0 0 30px #13effda2, 0 0 25px #e022fb99;
+    border-color: #e022fb70;
+}
+
+.portfolio-center img {
+    width: 200px;
+    height: 360px;
+    object-fit: cover;
+    border-radius: 12px;
+    box-shadow: 0 0 25px #13effd38;
+    border: 3px solid #e022fb70;
+    display: block;
+}
 
 
-import './VpClickzWebsite.css';
-import vp1 from "@src/assets/vp1.jpg"
-import vp2 from "@src/assets/vp2.jpg"
-import vp3 from "@src/assets/vp3.jpg"
-import vp4 from "@src/assets/vp4.jpg"
-import vp5 from "@src/assets/vp5.jpg"
 
-const VpClickzWebsite: React.FC = () => {
-  // State for the contact form inputs
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [number, setNumber] = useState('');
-  const [message, setMessage] = useState('');
+/* FAQ Section */
+.faq-section {
+    max-width: 650px;
+    margin: 0 auto 50px auto;
+    padding: 38px 22px;
+    background: rgba(18,20,31,.74);
+    border-radius: 18px;
+    box-shadow: 0 2px 16px #00f4ff29;
+}
+.faq-title {
+    color: #13effd;
+    font-size: 1.7rem;
+    margin-bottom: 0.8em;
+    text-align: center;
+    font-weight: 700;
+}
+.faq-list {
+    list-style: none;
+    padding: 0;
+    column-count: 0;
+}
+.faq-list li {
+    margin-bottom: 24px;
+}
+.faq-question {
+    color: #ffe92b;
+    font-weight: 700;
+    font-size: 1.1rem;
+    margin-bottom: 5px;
+}
+.faq-answer {
+    color: #f8f8fe;
+    padding-left: 2px;
+}
+/* Testimonial Section */
+.testimonial-section {
+    padding: 45px 0;
+    background: transparent;
+    text-align: center;
+}
+.testimonial-title {
+    color: #13effd;
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 30px;
+}
+.testimonial-list {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 32px;
+}
+.testimonial-card {
+    background: rgba(30,45,60,0.75);
+    border-radius: 15px;
+    box-shadow: 0 2px 12px #00f0ff40, 0 0 25px #ff00fa16;
+    padding: 25px 62px;
+    max-width: 350px;
+    text-align: left;
+}
+.testimonial-user {
+    font-weight: 700;
+    color: #ffe92b;
+    margin-top: 18px;
+    font-size: 1rem;
+}
+.testimonial-quote {
+    font-style: italic;
+    color: #e0e2f4;
+    margin-bottom: 0;
+    font-size: 1.1rem;
+}
 
-  // Event handler for the WhatsApp submit button
-  const handleWhatsAppSubmit = (e: React.MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault(); // Prevent form from submitting traditionally
+.contact-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; /* Ensure vertical centering if parent has height */
+    min-height: 100vh; /* Optional: Makes section fill viewport for full-centering */
+    margin-bottom: 70px;
+}
 
-    const ownerNumber = "916385371104"; // Your WhatsApp number
+.contact-form {
+    background: rgba(22, 23, 43, 0.8);
+    padding: 40px 28px 28px 40px;
+    border-radius: 18px;
+    max-width: 440px;
+    width: 98%;
+    margin: 0 auto; /* Adds horizontal centering in its parent */
+    box-shadow: 0 0 28px #03f5f920;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    /* Center the content inside the form */
+}
+.contact-form input, .contact-form textarea {
+    background: #16172b;
+    border: none;
+    color: #fff;
+    font-size: 1rem;
+    padding: 12px 15px;
+    border-radius: 8px;
+    width: 100%;
+    box-sizing: border-box;
+    font-family: 'Montserrat', Arial, sans-serif;
+    margin-bottom: 0;
+    outline: none;
+}
+.contact-form input:focus, .contact-form textarea:focus {
+    border: 2px solid #13effd;
+    background: #181a2c;
+}
+.contact-form button {
+    margin-top: 8px;
+    align-self: center; /* Ensures the button is also centered */
+}
 
-    const whatsappURL = `https://wa.me/${ownerNumber}?text=${encodeURIComponent(
-      `Customer Name: ${name}\nEmail: ${email}\nMobile Number:${number}\nMessage: ${message}`
-    )}`;
+/* Footer Section */
+footer {
+    background: linear-gradient(90deg, #23243a 60%, #15162b 100%);
+    width: 98%;
+    color: #d3e0fc;
+    text-align: center;
+    padding: 48px 20px 20px 48px;
+    font-size: 1rem;
+    letter-spacing: .04em;
+    margin-top: 70px;
+}
+.footer-social {
+    margin-bottom: 16px;
+    display: flex;
+    justify-content: center;
+    gap:15px;
+}
+.footer-social a {
+    color: #13effd;
+    font-size: 1.3rem;
+}
+@media (max-width: 950px) {
+    .services-list, .portfolio-gallery, .testimonial-list { flex-direction: column; align-items: center;}
+    .service-card, .portfolio-item img, .testimonial-card { width: 93%; }
+    .about-section { max-width: 99%; }
+}
+@media (max-width: 820px) {
+    .shape-1, .shape-2, .shape-3, .shape-4 { display: none;}
+    .container { width: 98%;}
+    .hero { margin-top: 30px;}
+    header { flex-direction: column; gap: 12px; padding: 15px 0 8px 0;}
+}
+@media (max-width: 768px){
+    .hero-title{font-size:1.5rem;}
+    .about-section{ font-size:1rem;}
+}
 
-    window.open(whatsappURL, "_blank");
-  };
+@media (max-width: 900px) {
+    .portfolio-section {
+        flex-direction: column;
+        gap: 28px;
+        align-items: center;
+    }
+    .portfolio-column {
+        flex-direction: row;
+        gap: 12px;
+        margin-bottom: 0;
+        justify-content: center;
+    }
+    .portfolio-item img, .portfolio-center img {
+        width: 100px;
+        height: 70px;
+    }
+    .portfolio-center img {
+        height: 170px;
+    }
+    .services-list, .testimonial-list {
+        flex-direction: column;
+        gap: 18px;
+        align-items: center;
+    }
+    .service-card, .testimonial-card {
+        width: 98vw;
+        max-width: 340px;
+    }
+}
 
-  return (
-    <>
-      <div className="neon-bg"></div>
-      <div className="container">
-        {/* Header with logo */}
-        <header>
-          <div className="logo-area">
-            <span className="brand-tagline"></span>
-          </div>
-          <nav>
-            <a href="#home">Home</a>
-            <a href="#about">About</a>
-            <a href="#portfolio">Portfolio</a>
-            <a href="#services">Services</a>
-            <a href="#faq">Q&A</a>
-            <a href="#testimonials">Testimonials</a>
-            <a href="#contact">Contact</a>
-          </nav>
-          <div className="social-icons">
-            <a href="https://www.instagram.com/vp_clicks_25?igsh=MTBteHNqMTFscmVuYg==" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-              <i className="fab fa-instagram"></i>
-            </a>
-          </div>
-        </header>
+@media (max-width: 600px) {
+    header, .container {
+        flex-direction: column !important;
+        width: 100vw !important;
+        padding: 0 8px !important;
+    }
+    .hero-title {
+        font-size: 1.6rem;
+    }
+    .about-section,
+    .faq-section {
+        font-size: 1rem;
+        padding: 40px;
+        column-count :1;
+        width: 95%;
+    }
+    .portfolio-item img {
+        width: 80px;
+        height: 50px;
+    }
+    .portfolio-center img {
+        width: 70px;
+        height: 125px;
+    }
+    nav {
+        flex-wrap: wrap;
+        gap: 12px;
+    }
+    .services-list {
+        gap: 12px;
+    }
+    .service-card {
+        padding: 18px 10px;
+        width: 99vw;
+        max-width: 350px;
+    }
+}
 
-        {/* Hero Section with animated gradient text */}
-        <section className="hero" id="home">
-          <div className="hero-title">
-            <span className="hero-gradient"></span><br />
-            <span className="hero-gradient" style={{ fontSize: '5.05rem' }}>VPCLICKZ</span>
-          </div>
-          <div className="hero-subtitle">
-            Welcome to VP CLICKZ! India's boldest photography destination for stunning portraits, creative event coverage, and vibrant visual storytelling.<br />
-            Transform memories into masterpieces with pro-grade studio, outdoor, and commercial shoots. Trusted by brands & cherished by families.
-          </div>
-          <button className="cta-btn" onClick={() => { window.location.href = '#contact'; }}>Book now</button>
-        </section>
-
-        {/* Animated Neon geometric shapes */}
-        <div className="shape-1"></div>
-        <div className="shape-2"></div>
-        <div className="shape-3"></div>
-        <div className="shape-4"></div>
-        <div className="square-sm"></div>
-        <div className="square-sm2"></div>
-      </div>
-
-      {/* About Us Section */}
-      <section className="about-section" id="about">
-        <div className="about-title">About Us</div>
-        <p>
-          VP CLICKZ is a creative photography studio based in Thiruverumbur, Trichy. Founded by Veeramani, we offer a full spectrum of professional photography and design services for families, brands, and businesses. With a passion for innovation and years of artistic expertise, our team captures moments that matter — from intimate weddings and lively events to bold product shoots and artistic portraits.<br /><br />
-          Our studio is known for friendly service, attention to detail, and cutting-edge visual experiences using the latest digital tools. We believe every client deserves memories worth cherishing forever. Discover the VP CLICKZ experience today!
-        </p>
-      </section>
-
-      {/* Services Section */}
-      <section className="services-section" id="services">
-        <h2 className="section-title">Our Services</h2>
-        <div className="services-list">
-          <div className="service-card">
-            <span className="service-icon">📸</span>
-            <h3>Portrait Photography</h3>
-            <p>Professional studio and outdoor sessions for individuals, couples, families, and more.</p>
-          </div>
-          <div className="service-card">
-            <span className="service-icon">🎬</span>
-            <h3>Event Coverage</h3>
-            <p>Expert photography for weddings, birthdays, corporate functions, and festivals.</p>
-          </div>
-          <div className="service-card">
-            <span className="service-icon">🛍️</span>
-            <h3>Product Shoots</h3>
-            <p>High-quality product and commercial photography to elevate your brand's image.</p>
-          </div>
-          <div className="service-card">
-            <span className="service-icon">🌈</span>
-            <h3>Creative Retouching</h3>
-            <p>Advanced editing, color grading, and artistic photo effects for unforgettable results.</p>
-          </div>
-        </div>
-      </section>
-
-      {/* Portfolio Section */}
-      <section className="portfolio-section" id="portfolio">
-        <h2 className="section-title">Portfolio</h2>
-        <div className="portfolio-section">
-          <div className="portfolio-column">
-            {/* NOTE: Images paths are fixed to /images/... assuming they are in the 'public/images' folder */}
-            <div className="portfolio-item"><img src="src/assets/vp1.jpg" alt="Portfolio 1" /></div>
-            <div className="portfolio-item"><img src="src/assets/vp2.jpg" alt="Portfolio 2" /></div>
-          </div>
-          <div className="portfolio-center">
-            <img src="src/assets/vp3.jpg" alt="Portfolio Center" />
-          </div>
-          <div className="portfolio-column">
-            <div className="portfolio-item"><img src="src/assets/vp4.jpg" alt="Portfolio 3" /></div>
-            <div className="portfolio-item"><img src="src/assets/vp5.jpg" alt="Portfolio 4" /></div>
-          </div>
-        </div>
-      </section>
-
-      {/* FAQ/Q&A Section */}
-      <section className="faq-section" id="faq">
-        <div className="faq-title">Questions & Answers</div>
-        <ul className="faq-list">
-          <li>
-            <div className="faq-question">What types of photography do you offer?</div>
-            <div className="faq-answer">VP CLICKZ covers portraits, events, products, creative shoots, retouching, and videography upon request.</div>
-          </li>
-          <li>
-            <div className="faq-question">How do I book a session?</div>
-            <div className="faq-answer">Use our contact form below or call us during studio hours; we reply to all inquiries within 24 hours.</div>
-          </li>
-          <li>
-            <div className="faq-question">Do you provide prints, albums, or framing?</div>
-            <div className="faq-answer">Yes! We offer full print and album packages, as well as custom framing for all shoots.</div>
-          </li>
-          <li>
-            <div className="faq-question">Do you travel for events or offer shoots outside Trichy?</div>
-            <div className="faq-answer">Absolutely! We serve all nearby towns and are available to travel for projects on request.</div>
-          </li>
-          <li>
-            <div className="faq-question">What is your editing process?</div>
-            <div className="faq-answer">Every image is professionally edited and delivered with color correction, crop, and optional creative effects.</div>
-          </li>
-        </ul>
-      </section>
-
-      {/* Testimonial Section */}
-      <section className="testimonial-section" id="testimonials">
-        <div className="testimonial-title">Client Testimonials</div>
-        <div className="testimonial-list">
-          <div className="testimonial-card">
-            <div className="testimonial-quote">“VP CLICKZ made our family photoshoot magical! The studio is welcoming and the photos look stunning!”</div>
-            <div className="testimonial-user">– Aravind R.</div>
-          </div>
-          <div className="testimonial-card">
-            <div className="testimonial-quote">“Professional, friendly, and creative. Our wedding memories are truly priceless thanks to Veeramani and team.”</div>
-            <div className="testimonial-user">– Swathi & Karthik</div>
-          </div>
-          <div className="testimonial-card">
-            <div className="testimonial-quote">“Quick turnaround, vibrant colors, and lots of attention to detail on our product shoot. Highly recommended!”</div>
-            <div className="testimonial-user">– CraftyArts, Trichy</div>
-          </div>
-        </div>
-      </section>
-
-      {/* Contact Form Section */}
-      <section className="contact-section" id="contact">
-        <h2 className="section-title">Send Inquiry</h2>
-        <form className="contact-form" id="contactForm" onSubmit={(e) => e.preventDefault()}>
-          <div className="form-group">
-            <label htmlFor="nameInput" style={{ color: 'white' }}>Name *</label>
-            <input
-              type="text"
-              id="nameInput"
-              name="name"
-              placeholder="Your full name"
-              required
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-            />
-          </div>
-
-          <div className="form-group">
-            <label htmlFor="emailInput" style={{ color: 'white' }}>Email *</label>
-            <input
-              type="email"
-              id="emailInput"
-              name="email"
-              placeholder="your.email@example.com"
-              required
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-          </div>
-
-          <div className="form-group">
-            <label htmlFor="numberInput" style={{ color: 'white' }}>Phone *</label>
-            <input
-              type="tel"
-              id="numberInput"
-              name="number"
-              placeholder="+91 XXXXXXXXXX"
-              pattern="[0-9]{10}"
-              required
-              value={number}
-              onChange={(e) => setNumber(e.target.value)}
-            />
-          </div>
-
-          <div className="form-group">
-            <label htmlFor="messageInput" style={{ color: 'white' }}>Message *</label>
-            <textarea
-              id="messageInput"
-              name="message"
-              rows={5}
-              placeholder="Tell us about your photography needs..."
-              required
-              value={message}
-              onChange={(e) => setMessage(e.target.value)}
-            ></textarea>
-          </div>
-
-          <button
-            type="submit"
-            onClick={handleWhatsAppSubmit}
-            style={{
-              background: 'linear-gradient(90deg,#fbff00 10%, #ff00fa 90%)',
-              color: 'white',
-              margin: '10px 0',
-              padding: '12px 24px',
-              fontWeight: 'bold',
-              border: 'none',
-              borderRadius: '30px',
-              width: '100%',
-              cursor: 'pointer'
-            }}
-          >
-            📧 Send via WhatsApp
-          </button>
-        </form>
-      </section>
-
-      {/* Footer Section */}
-      <footer>
-        <div className="footer-social">
-          <a href="https://www.instagram.com/vp_clicks_25?igsh=MTBteHNqMTFscmVuYg==" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-            <i className="fab fa-instagram"></i>
-          </a>
-          <a href="https://wa.me/916385371104" aria-label="WhatsApp">
-            <i className="fab fa-whatsapp"></i>
-          </a>
-        </div>
-        <div className="footer-text">
-          VP CLICKZ &copy; 2025 — All rights reserved.<br />
-          Made with passion by VELTROX.
-        </div>
-      </footer>
-    </>
-  );
-};
-
-export default VpClickzWebsite;
+img, video {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
