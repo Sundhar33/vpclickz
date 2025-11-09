@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import "./VpClickzWebsite.css";
 
-import vp1 from "@src/assets/vp1.jpg";
-import vp2 from "@src/assets/vp2.jpg";
-import vp3 from "@src/assets/vp3.jpg";
-import vp4 from "@src/assets/vp4.jpg";
-import vp5 from "@src/assets/vp5.jpg";
+import vp1 from "./assets/vp1.jpg";
+import vp2 from "./assets/vp2.jpg";
+import vp3 from "./assets/vp3.jpg";
+import vp4 from "./assets/vp4.jpg";
+import vp5 from "./assets/vp5.jpg";
 
 const VpClickzWebsite: React.FC = () => {
   const [menuOpen, setMenuOpen] = useState(false);
