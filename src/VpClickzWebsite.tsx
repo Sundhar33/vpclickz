@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import './VpClickzWebsite.css';
 
-// ✅ Use relative imports (no @src)
+// 🔹 FIX: use relative imports (no "@src" alias)
 import vp1 from './assets/vp1.jpg';
 import vp2 from './assets/vp2.jpg';
 import vp3 from './assets/vp3.jpg';
@@ -20,13 +20,13 @@ const VpClickzWebsite: React.FC = () => {
   const handleWhatsAppSubmit = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault(); // Prevent form from submitting traditionally
 
-    const ownerNumber = '916385371104'; // Your WhatsApp number WITH country code
+    const ownerNumber = "916385371104"; // Your WhatsApp number (unchanged)
 
     const whatsappURL = `https://wa.me/${ownerNumber}?text=${encodeURIComponent(
       `Customer Name: ${name}\nEmail: ${email}\nMobile Number:${number}\nMessage: ${message}`
     )}`;
 
-    window.open(whatsappURL, '_blank');
+    window.open(whatsappURL, "_blank");
   };
 
   return (
@@ -62,28 +62,14 @@ const VpClickzWebsite: React.FC = () => {
         {/* Hero Section with animated gradient text */}
         <section className="hero" id="home">
           <div className="hero-title">
-            <span className="hero-gradient"></span>
-            <br />
-            <span
-              className="hero-gradient"
-              style={{ fontSize: '5.05rem' }}
-            >
-              VPCLICKZ
-            </span>
+            <span className="hero-gradient"></span><br />
+            <span className="hero-gradient" style={{ fontSize: '5.05rem' }}>VPCLICKZ</span>
           </div>
           <div className="hero-subtitle">
-            Welcome to VP CLICKZ! India's boldest photography destination for stunning portraits, creative event coverage, and vibrant visual storytelling.
-            <br />
+            Welcome to VP CLICKZ! India's boldest photography destination for stunning portraits, creative event coverage, and vibrant visual storytelling.<br />
             Transform memories into masterpieces with pro-grade studio, outdoor, and commercial shoots. Trusted by brands & cherished by families.
           </div>
-          <button
-            className="cta-btn"
-            onClick={() => {
-              window.location.href = '#contact';
-            }}
-          >
-            Book now
-          </button>
+          <button className="cta-btn" onClick={() => { window.location.href = '#contact'; }}>Book now</button>
         </section>
 
         {/* Animated Neon geometric shapes */}
@@ -99,9 +85,7 @@ const VpClickzWebsite: React.FC = () => {
       <section className="about-section" id="about">
         <div className="about-title">About Us</div>
         <p>
-          VP CLICKZ is a creative photography studio based in Thiruverumbur, Trichy. Founded by Veeramani, we offer a full spectrum of professional photography and design services for families, brands, and businesses. With a passion for innovation and years of artistic expertise, our team captures moments that matter — from intimate weddings and lively events to bold product shoots and artistic portraits.
-          <br />
-          <br />
+          VP CLICKZ is a creative photography studio based in Thiruverumbur, Trichy. Founded by Veeramani, we offer a full spectrum of professional photography and design services for families, brands, and businesses. With a passion for innovation and years of artistic expertise, our team captures moments that matter — from intimate weddings and lively events to bold product shoots and artistic portraits.<br /><br />
           Our studio is known for friendly service, attention to detail, and cutting-edge visual experiences using the latest digital tools. We believe every client deserves memories worth cherishing forever. Discover the VP CLICKZ experience today!
         </p>
       </section>
@@ -123,7 +107,7 @@ const VpClickzWebsite: React.FC = () => {
           <div className="service-card">
             <span className="service-icon">🛍️</span>
             <h3>Product Shoots</h3>
-            <p>High-quality product and commercial photography to elevate your brand&apos;s image.</p>
+            <p>High-quality product and commercial photography to elevate your brand's image.</p>
           </div>
           <div className="service-card">
             <span className="service-icon">🌈</span>
@@ -138,60 +122,43 @@ const VpClickzWebsite: React.FC = () => {
         <h2 className="section-title">Portfolio</h2>
         <div className="portfolio-section">
           <div className="portfolio-column">
-            <div className="portfolio-item">
-              <img src={vp1} alt="Portfolio 1" />
-            </div>
-            <div className="portfolio-item">
-              <img src={vp2} alt="Portfolio 2" />
-            </div>
+            {/* 🔹 FIX: use imported images so Vite can bundle correctly */}
+            <div className="portfolio-item"><img src={vp1} alt="Portfolio 1" /></div>
+            <div className="portfolio-item"><img src={vp2} alt="Portfolio 2" /></div>
           </div>
           <div className="portfolio-center">
             <img src={vp3} alt="Portfolio Center" />
           </div>
           <div className="portfolio-column">
-            <div className="portfolio-item">
-              <img src={vp4} alt="Portfolio 3" />
-            </div>
-            <div className="portfolio-item">
-              <img src={vp5} alt="Portfolio 4" />
-            </div>
+            <div className="portfolio-item"><img src={vp4} alt="Portfolio 3" /></div>
+            <div className="portfolio-item"><img src={vp5} alt="Portfolio 4" /></div>
           </div>
         </div>
       </section>
 
       {/* FAQ/Q&A Section */}
       <section className="faq-section" id="faq">
-        <div className="faq-title">Questions &amp; Answers</div>
+        <div className="faq-title">Questions & Answers</div>
         <ul className="faq-list">
           <li>
             <div className="faq-question">What types of photography do you offer?</div>
-            <div className="faq-answer">
-              VP CLICKZ covers portraits, events, products, creative shoots, retouching, and videography upon request.
-            </div>
+            <div className="faq-answer">VP CLICKZ covers portraits, events, products, creative shoots, retouching, and videography upon request.</div>
           </li>
           <li>
             <div className="faq-question">How do I book a session?</div>
-            <div className="faq-answer">
-              Use our contact form below or call us during studio hours; we reply to all inquiries within 24 hours.
-            </div>
+            <div className="faq-answer">Use our contact form below or call us during studio hours; we reply to all inquiries within 24 hours.</div>
           </li>
           <li>
             <div className="faq-question">Do you provide prints, albums, or framing?</div>
-            <div className="faq-answer">
-              Yes! We offer full print and album packages, as well as custom framing for all shoots.
-            </div>
+            <div className="faq-answer">Yes! We offer full print and album packages, as well as custom framing for all shoots.</div>
           </li>
           <li>
             <div className="faq-question">Do you travel for events or offer shoots outside Trichy?</div>
-            <div className="faq-answer">
-              Absolutely! We serve all nearby towns and are available to travel for projects on request.
-            </div>
+            <div className="faq-answer">Absolutely! We serve all nearby towns and are available to travel for projects on request.</div>
           </li>
           <li>
             <div className="faq-question">What is your editing process?</div>
-            <div className="faq-answer">
-              Every image is professionally edited and delivered with color correction, crop, and optional creative effects.
-            </div>
+            <div className="faq-answer">Every image is professionally edited and delivered with color correction, crop, and optional creative effects.</div>
           </li>
         </ul>
       </section>
@@ -201,21 +168,15 @@ const VpClickzWebsite: React.FC = () => {
         <div className="testimonial-title">Client Testimonials</div>
         <div className="testimonial-list">
           <div className="testimonial-card">
-            <div className="testimonial-quote">
-              “VP CLICKZ made our family photoshoot magical! The studio is welcoming and the photos look stunning!”
-            </div>
+            <div className="testimonial-quote">“VP CLICKZ made our family photoshoot magical! The studio is welcoming and the photos look stunning!”</div>
             <div className="testimonial-user">– Aravind R.</div>
           </div>
           <div className="testimonial-card">
-            <div className="testimonial-quote">
-              “Professional, friendly, and creative. Our wedding memories are truly priceless thanks to Veeramani and team.”
-            </div>
-            <div className="testimonial-user">– Swathi &amp; Karthik</div>
+            <div className="testimonial-quote">“Professional, friendly, and creative. Our wedding memories are truly priceless thanks to Veeramani and team.”</div>
+            <div className="testimonial-user">– Swathi & Karthik</div>
           </div>
           <div className="testimonial-card">
-            <div className="testimonial-quote">
-              “Quick turnaround, vibrant colors, and lots of attention to detail on our product shoot. Highly recommended!”
-            </div>
+            <div className="testimonial-quote">“Quick turnaround, vibrant colors, and lots of attention to detail on our product shoot. Highly recommended!”</div>
             <div className="testimonial-user">– CraftyArts, Trichy</div>
           </div>
         </div>
@@ -224,15 +185,9 @@ const VpClickzWebsite: React.FC = () => {
       {/* Contact Form Section */}
       <section className="contact-section" id="contact">
         <h2 className="section-title">Send Inquiry</h2>
-        <form
-          className="contact-form"
-          id="contactForm"
-          onSubmit={(e) => e.preventDefault()}
-        >
+        <form className="contact-form" id="contactForm" onSubmit={(e) => e.preventDefault()}>
           <div className="form-group">
-            <label htmlFor="nameInput" style={{ color: 'white' }}>
-              Name *
-            </label>
+            <label htmlFor="nameInput" style={{ color: 'white' }}>Name *</label>
             <input
               type="text"
               id="nameInput"
@@ -245,9 +200,7 @@ const VpClickzWebsite: React.FC = () => {
           </div>
 
           <div className="form-group">
-            <label htmlFor="emailInput" style={{ color: 'white' }}>
-              Email *
-            </label>
+            <label htmlFor="emailInput" style={{ color: 'white' }}>Email *</label>
             <input
               type="email"
               id="emailInput"
@@ -260,9 +213,7 @@ const VpClickzWebsite: React.FC = () => {
           </div>
 
           <div className="form-group">
-            <label htmlFor="numberInput" style={{ color: 'white' }}>
-              Phone *
-            </label>
+            <label htmlFor="numberInput" style={{ color: 'white' }}>Phone *</label>
             <input
               type="tel"
               id="numberInput"
@@ -276,9 +227,7 @@ const VpClickzWebsite: React.FC = () => {
           </div>
 
           <div className="form-group">
-            <label htmlFor="messageInput" style={{ color: 'white' }}>
-              Message *
-            </label>
+            <label htmlFor="messageInput" style={{ color: 'white' }}>Message *</label>
             <textarea
               id="messageInput"
               name="message"
@@ -302,7 +251,7 @@ const VpClickzWebsite: React.FC = () => {
               border: 'none',
               borderRadius: '30px',
               width: '100%',
-              cursor: 'pointer',
+              cursor: 'pointer'
             }}
           >
             📧 Send via WhatsApp
@@ -326,8 +275,7 @@ const VpClickzWebsite: React.FC = () => {
           </a>
         </div>
         <div className="footer-text">
-          VP CLICKZ &copy; 2025 — All rights reserved.
-          <br />
+          VP CLICKZ &copy; 2025 — All rights reserved.<br />
           Made with passion by VELTROZ.
         </div>
       </footer>
