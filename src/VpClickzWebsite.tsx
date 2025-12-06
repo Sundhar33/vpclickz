@@ -1,26 +1,22 @@
-
 import React, { useState } from 'react';
 
-
 import './VpClickzWebsite.css';
-import vp1 from "@src/assets/vp1.jpg"
-import vp2 from "@src/assets/vp2.jpg"
-import vp3 from "@src/assets/vp3.jpg"
-import vp4 from "@src/assets/vp4.jpg"
-import vp5 from "@src/assets/vp5.jpg"
+import vp1 from "@src/assets/vp1.jpg";
+import vp2 from "@src/assets/vp2.jpg";
+import vp3 from "@src/assets/vp3.jpg";
+import vp4 from "@src/assets/vp4.jpg";
+import vp5 from "@src/assets/vp5.jpg";
 
 const VpClickzWebsite: React.FC = () => {
-  // State for the contact form inputs
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [number, setNumber] = useState('');
   const [message, setMessage] = useState('');
 
-  // Event handler for the WhatsApp submit button
   const handleWhatsAppSubmit = (e: React.MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault(); // Prevent form from submitting traditionally
+    e.preventDefault();
 
-    const ownerNumber = "916385371104"; // Your WhatsApp number
+    const ownerNumber = "916385371104";
 
     const whatsappURL = `https://wa.me/${ownerNumber}?text=${encodeURIComponent(
       `Customer Name: ${name}\nEmail: ${email}\nMobile Number:${number}\nMessage: ${message}`
@@ -48,7 +44,12 @@ const VpClickzWebsite: React.FC = () => {
             <a href="#contact">Contact</a>
           </nav>
           <div className="social-icons">
-            <a href="https://www.instagram.com/vp_clicks_25?igsh=MTBteHNqMTFscmVuYg==" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+            <a
+              href="https://www.instagram.com/vp_clicks_25?igsh=MTBteHNqMTFscmVuYg=="
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Instagram"
+            >
               <i className="fab fa-instagram"></i>
             </a>
           </div>
@@ -117,16 +118,23 @@ const VpClickzWebsite: React.FC = () => {
         <h2 className="section-title">Portfolio</h2>
         <div className="portfolio-section">
           <div className="portfolio-column">
-            {/* NOTE: Images paths are fixed to /images/... assuming they are in the 'public/images' folder */}
-            <div className="portfolio-item"><img src="src/assets/vp1.jpg" alt="Portfolio 1" /></div>
-            <div className="portfolio-item"><img src="src/assets/vp2.jpg" alt="Portfolio 2" /></div>
+            <div className="portfolio-item">
+              <img src={vp1} alt="Portfolio 1" />
+            </div>
+            <div className="portfolio-item">
+              <img src={vp2} alt="Portfolio 2" />
+            </div>
           </div>
           <div className="portfolio-center">
-            <img src="src/assets/vp3.jpg" alt="Portfolio Center" />
+            <img src={vp3} alt="Portfolio Center" />
           </div>
           <div className="portfolio-column">
-            <div className="portfolio-item"><img src="src/assets/vp4.jpg" alt="Portfolio 3" /></div>
-            <div className="portfolio-item"><img src="src/assets/vp5.jpg" alt="Portfolio 4" /></div>
+            <div className="portfolio-item">
+              <img src={vp4} alt="Portfolio 3" />
+            </div>
+            <div className="portfolio-item">
+              <img src={vp5} alt="Portfolio 4" />
+            </div>
           </div>
         </div>
       </section>
@@ -257,7 +265,12 @@ const VpClickzWebsite: React.FC = () => {
       {/* Footer Section */}
       <footer>
         <div className="footer-social">
-          <a href="https://www.instagram.com/vp_clicks_25?igsh=MTBteHNqMTFscmVuYg==" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+          <a
+            href="https://www.instagram.com/vp_clicks_25?igsh=MTBteHNqMTFscmVuYg=="
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Instagram"
+          >
             <i className="fab fa-instagram"></i>
           </a>
           <a href="https://wa.me/916385371104" aria-label="WhatsApp">
