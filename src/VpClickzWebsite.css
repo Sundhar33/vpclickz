@@ -536,3 +536,15 @@ img, video {
     height: auto;
     display: block;
 }
+/* Mobile view adjustments */
+@media (max-width: 768px) {
+  /* 1. Hide navbar on mobile */
+  header nav {
+    display: none;
+  }
+
+  /* 2. Hide header Instagram icon on mobile */
+  header .social-icons {
+    display: none;
+  }
+}
