@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import './VpClickzWebsite.css';
 
-// ✅ Use relative imports instead of "@src"
+// ✅ Use relative imports (no @src)
 import vp1 from './assets/vp1.jpg';
 import vp2 from './assets/vp2.jpg';
 import vp3 from './assets/vp3.jpg';
@@ -10,18 +10,20 @@ import vp4 from './assets/vp4.jpg';
 import vp5 from './assets/vp5.jpg';
 
 const VpClickzWebsite: React.FC = () => {
+  // State for the contact form inputs
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [number, setNumber] = useState('');
   const [message, setMessage] = useState('');
 
+  // Event handler for the WhatsApp submit button
   const handleWhatsAppSubmit = (e: React.MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault();
+    e.preventDefault(); // Prevent form from submitting traditionally
 
-    const ownerNumber = '916385371104'; // WhatsApp number with country code
+    const ownerNumber = '916385371104'; // Your WhatsApp number WITH country code
 
     const whatsappURL = `https://wa.me/${ownerNumber}?text=${encodeURIComponent(
-      `Customer Name: ${name}\nEmail: ${email}\nMobile Number: ${number}\nMessage: ${message}`
+      `Customer Name: ${name}\nEmail: ${email}\nMobile Number:${number}\nMessage: ${message}`
     )}`;
 
     window.open(whatsappURL, '_blank');
@@ -34,7 +36,7 @@ const VpClickzWebsite: React.FC = () => {
         {/* Header with logo */}
         <header>
           <div className="logo-area">
-            <span className="brand-tagline">VP CLICKZ</span>
+            <span className="brand-tagline"></span>
           </div>
           <nav>
             <a href="#home">Home</a>
@@ -46,7 +48,6 @@ const VpClickzWebsite: React.FC = () => {
             <a href="#contact">Contact</a>
           </nav>
           <div className="social-icons">
-            {/* This Instagram icon will be hidden on mobile via CSS */}
             <a
               href="https://www.instagram.com/vp_clicks_25?igsh=MTBteHNqMTFscmVuYg=="
               target="_blank"
@@ -61,18 +62,26 @@ const VpClickzWebsite: React.FC = () => {
         {/* Hero Section with animated gradient text */}
         <section className="hero" id="home">
           <div className="hero-title">
-            <span className="hero-gradient small-title">Welcome to</span>
+            <span className="hero-gradient"></span>
             <br />
-            <span className="hero-gradient main-title">VPCLICKZ</span>
+            <span
+              className="hero-gradient"
+              style={{ fontSize: '5.05rem' }}
+            >
+              VPCLICKZ
+            </span>
           </div>
           <div className="hero-subtitle">
-            Welcome to VP CLICKZ! India's boldest photography destination for stunning portraits, creative event
-            coverage, and vibrant visual storytelling.
+            Welcome to VP CLICKZ! India's boldest photography destination for stunning portraits, creative event coverage, and vibrant visual storytelling.
             <br />
-            Transform memories into masterpieces with pro-grade studio, outdoor, and commercial shoots. Trusted by
-            brands &amp; cherished by families.
+            Transform memories into masterpieces with pro-grade studio, outdoor, and commercial shoots. Trusted by brands & cherished by families.
           </div>
-          <button className="cta-btn" onClick={() => { window.location.href = '#contact'; }}>
+          <button
+            className="cta-btn"
+            onClick={() => {
+              window.location.href = '#contact';
+            }}
+          >
             Book now
           </button>
         </section>
@@ -90,15 +99,10 @@ const VpClickzWebsite: React.FC = () => {
       <section className="about-section" id="about">
         <div className="about-title">About Us</div>
         <p>
-          VP CLICKZ is a creative photography studio based in Thiruverumbur, Trichy. Founded by Veeramani, we offer a
-          full spectrum of professional photography and design services for families, brands, and businesses. With a
-          passion for innovation and years of artistic expertise, our team captures moments that matter — from intimate
-          weddings and lively events to bold product shoots and artistic portraits.
+          VP CLICKZ is a creative photography studio based in Thiruverumbur, Trichy. Founded by Veeramani, we offer a full spectrum of professional photography and design services for families, brands, and businesses. With a passion for innovation and years of artistic expertise, our team captures moments that matter — from intimate weddings and lively events to bold product shoots and artistic portraits.
           <br />
           <br />
-          Our studio is known for friendly service, attention to detail, and cutting-edge visual experiences using the
-          latest digital tools. We believe every client deserves memories worth cherishing forever. Discover the VP
-          CLICKZ experience today!
+          Our studio is known for friendly service, attention to detail, and cutting-edge visual experiences using the latest digital tools. We believe every client deserves memories worth cherishing forever. Discover the VP CLICKZ experience today!
         </p>
       </section>
 
@@ -132,7 +136,7 @@ const VpClickzWebsite: React.FC = () => {
       {/* Portfolio Section */}
       <section className="portfolio-section" id="portfolio">
         <h2 className="section-title">Portfolio</h2>
-        <div className="portfolio-grid">
+        <div className="portfolio-section">
           <div className="portfolio-column">
             <div className="portfolio-item">
               <img src={vp1} alt="Portfolio 1" />
@@ -186,8 +190,7 @@ const VpClickzWebsite: React.FC = () => {
           <li>
             <div className="faq-question">What is your editing process?</div>
             <div className="faq-answer">
-              Every image is professionally edited and delivered with color correction, crop, and optional creative
-              effects.
+              Every image is professionally edited and delivered with color correction, crop, and optional creative effects.
             </div>
           </li>
         </ul>
@@ -205,15 +208,13 @@ const VpClickzWebsite: React.FC = () => {
           </div>
           <div className="testimonial-card">
             <div className="testimonial-quote">
-              “Professional, friendly, and creative. Our wedding memories are truly priceless thanks to Veeramani and
-              team.”
+              “Professional, friendly, and creative. Our wedding memories are truly priceless thanks to Veeramani and team.”
             </div>
             <div className="testimonial-user">– Swathi &amp; Karthik</div>
           </div>
           <div className="testimonial-card">
             <div className="testimonial-quote">
-              “Quick turnaround, vibrant colors, and lots of attention to detail on our product shoot. Highly
-              recommended!”
+              “Quick turnaround, vibrant colors, and lots of attention to detail on our product shoot. Highly recommended!”
             </div>
             <div className="testimonial-user">– CraftyArts, Trichy</div>
           </div>
@@ -223,9 +224,15 @@ const VpClickzWebsite: React.FC = () => {
       {/* Contact Form Section */}
       <section className="contact-section" id="contact">
         <h2 className="section-title">Send Inquiry</h2>
-        <form className="contact-form" id="contactForm" onSubmit={(e) => e.preventDefault()}>
+        <form
+          className="contact-form"
+          id="contactForm"
+          onSubmit={(e) => e.preventDefault()}
+        >
           <div className="form-group">
-            <label htmlFor="nameInput">Name *</label>
+            <label htmlFor="nameInput" style={{ color: 'white' }}>
+              Name *
+            </label>
             <input
               type="text"
               id="nameInput"
@@ -238,7 +245,9 @@ const VpClickzWebsite: React.FC = () => {
           </div>
 
           <div className="form-group">
-            <label htmlFor="emailInput">Email *</label>
+            <label htmlFor="emailInput" style={{ color: 'white' }}>
+              Email *
+            </label>
             <input
               type="email"
               id="emailInput"
@@ -251,7 +260,9 @@ const VpClickzWebsite: React.FC = () => {
           </div>
 
           <div className="form-group">
-            <label htmlFor="numberInput">Phone *</label>
+            <label htmlFor="numberInput" style={{ color: 'white' }}>
+              Phone *
+            </label>
             <input
               type="tel"
               id="numberInput"
@@ -265,7 +276,9 @@ const VpClickzWebsite: React.FC = () => {
           </div>
 
           <div className="form-group">
-            <label htmlFor="messageInput">Message *</label>
+            <label htmlFor="messageInput" style={{ color: 'white' }}>
+              Message *
+            </label>
             <textarea
               id="messageInput"
               name="message"
@@ -280,7 +293,17 @@ const VpClickzWebsite: React.FC = () => {
           <button
             type="submit"
             onClick={handleWhatsAppSubmit}
-            className="whatsapp-btn"
+            style={{
+              background: 'linear-gradient(90deg,#fbff00 10%, #ff00fa 90%)',
+              color: 'white',
+              margin: '10px 0',
+              padding: '12px 24px',
+              fontWeight: 'bold',
+              border: 'none',
+              borderRadius: '30px',
+              width: '100%',
+              cursor: 'pointer',
+            }}
           >
             📧 Send via WhatsApp
           </button>
